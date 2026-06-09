@@ -1,0 +1,25 @@
+.btn {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  z-index: 100;
+  background: rgba(5,5,20,0.75);
+  border: 1px solid rgba(100,100,200,0.4);
+  color: #ccc;
+  font-size: clamp(10px, 3vw, 16px);
+  width: clamp(28px, 8vw, 36px);
+  height: clamp(28px, 8vw, 36px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.btn:hover {
+  background: rgba(20,15,50,0.9);
+  border-color: rgba(150,130,255,0.6);
+}
+.btn:focus-visible {
+  outline: 2px solid #9b7fe8;
+  outline-offset: 2px;
+}

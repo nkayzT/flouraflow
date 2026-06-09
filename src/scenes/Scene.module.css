@@ -1,0 +1,143 @@
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sceneImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Bedroom */
+.fairyBulb {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  animation: fairyTwinkle 2s ease-in-out infinite;
+  box-shadow: 0 0 6px 2px currentColor;
+}
+@keyframes fairyTwinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.7); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
+.windowStars {
+  position: absolute;
+  top: 5%;
+  left: 45%;
+  width: 52%;
+  height: 50%;
+  pointer-events: none;
+}
+.windowStar {
+  position: absolute;
+  background: rgba(220, 220, 255, 0.6);
+  border-radius: 50%;
+  animation: wStar 3s ease-in-out infinite;
+}
+@keyframes wStar {
+  0%, 100% { opacity: 0.1; }
+  50%       { opacity: 0.7; }
+}
+
+.girlSway {
+  /* Invisible overlay that pulses subtly to suggest breathing */
+  pointer-events: none;
+}
+
+/* Burger stand */
+.lightFlicker {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 60%, rgba(255,200,80,0.08) 0%, transparent 60%);
+  animation: lightFlicker 0.18s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes lightFlicker {
+  0%   { opacity: 0.7; }
+  33%  { opacity: 1; }
+  66%  { opacity: 0.85; }
+  100% { opacity: 0.9; }
+}
+
+.moth {
+  position: absolute;
+  width: 6px;
+  height: 4px;
+  background: rgba(255, 240, 200, 0.7);
+  border-radius: 50% 50% 30% 30%;
+  top: 20%;
+  left: 48%;
+  animation: mothFly 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes mothFly {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(18px, -12px) rotate(20deg); }
+  50%  { transform: translate(-8px, 8px) rotate(-15deg); }
+  75%  { transform: translate(22px, 5px) rotate(10deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Dock */
+.reflectionGlow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(255,100,0,0.04) 40%,
+    rgba(30,120,255,0.05) 80%,
+    transparent 100%
+  );
+  animation: reflGlow 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes reflGlow {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+.hairSway {
+  pointer-events: none;
+}
+
+/* Beach */
+.rippleWrap {
+  position: absolute;
+  bottom: 30%;
+  left: 25%;
+  width: 60px;
+  height: 30px;
+  pointer-events: none;
+}
+.ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 230, 255, 0.6);
+  animation: rippleExpand 1.8s ease-out infinite;
+}
+@keyframes rippleExpand {
+  0%   { transform: scale(0.3); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.rocksOverlay {
+  pointer-events: none;
+  animation: rocksBob 3s ease-in-out infinite;
+}
+@keyframes rocksBob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-2px); }
+}
