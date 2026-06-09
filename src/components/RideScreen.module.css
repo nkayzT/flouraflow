@@ -1,0 +1,207 @@
+.rideScreen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #050510;
+}
+
+/* Parallax layers */
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.layerSky {
+  background: linear-gradient(to bottom, #0a0520 0%, #1a0840 40%, #0d1a40 100%);
+  animation: scrollSky 12s linear infinite;
+}
+
+.layerMid {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px, transparent 60px,
+      rgba(20,40,80,0.3) 60px, rgba(20,40,80,0.3) 80px
+    );
+  animation: scrollMid 6s linear infinite;
+}
+
+@keyframes scrollSky {
+  0%   { background-position: 0 0; }
+  100% { background-position: -200px 0; }
+}
+@keyframes scrollMid {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-80px); }
+}
+
+/* Ride image */
+.rideImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  animation: bikeBob 0.4s ease-in-out infinite alternate;
+}
+@keyframes bikeBob {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
+}
+
+/* Road */
+.road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.roadDashes {
+  position: absolute;
+  top: 40%;
+  left: -100%;
+  width: 300%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,200,0.25) 0px,
+    rgba(255,255,200,0.25) 30px,
+    transparent 30px,
+    transparent 70px
+  );
+  animation: roadScroll 0.6s linear infinite;
+}
+@keyframes roadScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(100px); }
+}
+
+/* Wheel spin effects */
+.wheel {
+  position: absolute;
+  width: clamp(16px, 5vw, 28px);
+  height: clamp(16px, 5vw, 28px);
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.08);
+  border-top-color: rgba(255,255,255,0.2);
+  animation: wheelSpin 0.3s linear infinite;
+  pointer-events: none;
+}
+@keyframes wheelSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.wheelFront {
+  bottom: 14%;
+  right: 18%;
+}
+.wheelRear {
+  bottom: 14%;
+  left: 22%;
+}
+
+/* Headlight */
+.headlight {
+  position: absolute;
+  bottom: 22%;
+  width: 80px;
+  height: 40px;
+  pointer-events: none;
+  animation: headlightFlicker 0.2s ease-in-out infinite alternate;
+}
+.headlightRight {
+  right: 5%;
+  background: radial-gradient(ellipse at right center,
+    rgba(255,250,180,0.4) 0%,
+    rgba(255,240,100,0.15) 40%,
+    transparent 70%
+  );
+  transform: rotate(-10deg);
+}
+.headlightLeft {
+  left: 5%;
+  background: radial-gradient(ellipse at left center,
+    rgba(255,250,180,0.4) 0%,
+    rgba(255,240,100,0.15) 40%,
+    transparent 70%
+  );
+  transform: rotate(170deg);
+}
+@keyframes headlightFlicker {
+  0%   { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+/* Taillight */
+.taillight {
+  position: absolute;
+  bottom: 22%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255,40,40,0.7);
+  box-shadow: 0 0 8px 4px rgba(255,40,40,0.4);
+  pointer-events: none;
+  animation: taillightPulse 1s ease-in-out infinite;
+}
+.taillightRight {
+  left: 20%;
+}
+.taillightLeft {
+  right: 20%;
+}
+@keyframes taillightPulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+
+/* Exhaust */
+.exhaust {
+  position: absolute;
+  bottom: 18%;
+  width: 20px;
+  height: 12px;
+  pointer-events: none;
+  animation: exhaustPuff 0.8s ease-out infinite;
+}
+.exhaustRight {
+  left: 16%;
+  background: radial-gradient(circle, rgba(180,180,200,0.3) 0%, transparent 70%);
+}
+.exhaustLeft {
+  right: 16%;
+  background: radial-gradient(circle, rgba(180,180,200,0.3) 0%, transparent 70%);
+}
+@keyframes exhaustPuff {
+  0%   { transform: scale(0.5) translateX(0); opacity: 0.6; }
+  100% { transform: scale(2) translateX(-20px); opacity: 0; }
+}
+
+/* Stars */
+.starsLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  pointer-events: none;
+}
+.rideStar {
+  position: absolute;
+  background: rgba(220,220,255,0.8);
+  border-radius: 50%;
+  animation: starTwinkle 2.5s ease-in-out infinite;
+}
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.1; }
+  50%       { opacity: 0.9; }
+}
