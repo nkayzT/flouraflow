@@ -173,3 +173,141 @@
   transform: translateY(2px);
   box-shadow: 0 1px 0 #881010;
 }
+
+/* ============================================================
+   Touch controls — always visible on small screens,
+   hidden on desktop (pointer:fine) unless no fine pointer exists
+   ============================================================ */
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 20px 18px;
+  pointer-events: none;   /* only the buttons inside get events */
+  /* hidden on desktop */
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Show on touch-primary devices */
+@media (pointer: coarse) {
+  .controls { opacity: 1; }
+}
+
+/* ---- D-pad ---- */
+.dpad {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.dpadBtn {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  background: rgba(20, 16, 12, 0.82);
+  border: 2px solid rgba(255,255,255,0.18);
+  border-radius: 6px;
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: all;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-action: none;
+  transition: background 0.06s, transform 0.06s;
+}
+
+.dpadBtn:active {
+  background: rgba(200, 32, 32, 0.85);
+  transform: scale(0.93);
+}
+
+.dpadUp    { top: 0;    left: 44px; border-radius: 6px 6px 0 0; }
+.dpadDown  { bottom: 0; left: 44px; border-radius: 0 0 6px 6px; }
+.dpadLeft  { top: 44px; left: 0;    border-radius: 6px 0 0 6px; }
+.dpadRight { top: 44px; right: 0;   border-radius: 0 6px 6px 0; }
+
+.dpadCenter {
+  position: absolute;
+  top: 44px;
+  left: 44px;
+  width: 44px;
+  height: 44px;
+  background: rgba(20, 16, 12, 0.7);
+  pointer-events: none;
+}
+
+/* ---- Action buttons (GBA style) ---- */
+.actionBtns {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.actionCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.actionBtn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 3px solid rgba(0,0,0,0.5);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 13px;
+  color: #fff;
+  cursor: pointer;
+  pointer-events: all;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-action: none;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.5);
+  transition: transform 0.06s, box-shadow 0.06s;
+}
+
+.actionBtn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.5);
+}
+
+/* B = yellow (GBA palette) */
+.btnB {
+  background: #C8A000;
+  border-color: #7A5E00;
+  box-shadow: 0 4px 0 #7A5E00;
+}
+.btnB:active { box-shadow: 0 1px 0 #7A5E00; }
+
+/* A = red */
+.btnA {
+  background: #CC2020;
+  border-color: #881010;
+  box-shadow: 0 4px 0 #881010;
+}
+.btnA:active { box-shadow: 0 1px 0 #881010; }
+
+.btnLabel {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}

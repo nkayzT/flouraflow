@@ -829,6 +829,21 @@ export class Game {
     this.modalOpen = false;
   }
 
+  // Virtual key press/release (touch controls)
+  pressVirtualKey(key) {
+    if (!this.keys[key]) {
+      this.keys[key] = true;
+      // Mirror the keydown one-shot actions
+      if ((key === 'z' || key === 'Z' || key === 'Enter') && !this.modalOpen) {
+        this._handleInteract();
+      }
+    }
+  }
+
+  releaseVirtualKey(key) {
+    this.keys[key] = false;
+  }
+
   // ---- Input ----
   setupInput() {
     this._onKeyDown = (e) => {
